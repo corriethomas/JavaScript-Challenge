@@ -34,7 +34,11 @@ function runSearch() {
     let stateElement = inputstate.property("value");
     let countryElement = inputcountry.property("value");
     let shapeElement = inputshape.property("value");  
-    let filteredData = tableData.filter(row => (row.datetime === dateElement) || (row.city === cityElement) || (row.state === stateElement) || (row.country === countryElement) || (row.shape === shapeElement));
+    let filteredData = tableData.filter(row => (row.datetime === dateElement) 
+        || (row.city === cityElement) 
+        || (row.state === stateElement) 
+        || (row.country === countryElement) 
+        || (row.shape === shapeElement));
     console.log(filteredData);
     filteredData.forEach((row) => {        
         let tr = table.append("tr");
