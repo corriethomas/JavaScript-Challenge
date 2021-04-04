@@ -1,6 +1,7 @@
-// from data.js
+// Read data from data.js
 let tableData = data;
 
+// Create table
 let table = d3.select("tbody");
 
 tableData.forEach((rec) => {
@@ -14,16 +15,26 @@ tableData.forEach((rec) => {
    tr.append("td").text(rec.comments);
 });
 
+// Define variables to be used in search function
 let button = d3.select("#filter-btn");
-let inputfield = d3.select("#datetime");
-let form = d3.select("#form");
+
+let inputdate = d3.select("#datetime");
+let inputcity = d3.select("#city");
+let inputstate = d3.select("#state");
+let inputcountry = d3.select("#country");
+let inputshape = d3.select("#shape");
+// let form = d3.select("#form");
 
 button.on("click", runSearch);
 
 function runSearch() {
     d3.event.preventDefault();
-    let inputElement = inputfield.property("value");   
-    let filteredData = tableData.filter(row => row.datetime === inputElement);
+    let dateElement = inputdate.property("value"); 
+    let cityElement = inputcity.property("value");
+    let stateElement = inputstate.property("value");
+    let countryElement = inputcountry.property("value");
+    let shapeElement = inputshape.property("value");  
+    let filteredData = tableData.filter(row => (row.datetime === dateElement) || (row.city === cityElement) || (row.state === stateElement) || (row.country === countryElement) || (row.shape === shapeElement));
     console.log(filteredData);
     filteredData.forEach((row) => {        
         let tr = table.append("tr");
@@ -35,4 +46,5 @@ function runSearch() {
         tr.append("td").text(row.durationMinutes);
         tr.append("td").text(row.comments);
     });
-}
+};
+
