@@ -1,22 +1,6 @@
 // from data.js
 let tableData = data;
 
-// console.log("tableData", tableData);
-
-// tableData.forEach(function (item) {
-//     console.log(item["datetime"]);
-// });
-
-// let date = "1/1/2010"
-
-// tableData.filter((datum) => {
-//     return datum.datetime === date
-// });
-
-// YOUR CODE HERE!
-
-// let filteredData = tableData.slice(0,10);
-
 let table = d3.select("tbody");
 
 tableData.forEach((rec) => {
@@ -34,24 +18,14 @@ let button = d3.select("#filter-btn");
 let inputfield = d3.select("#datetime");
 let form = d3.select("#form");
 
-button.on("click", runSearch); 
-inputfield.on("click", runSearch);
-form.on("click", runSearch);
+button.on("click", runSearch);
 
 function runSearch() {
     d3.event.preventDefault();
     let inputElement = inputfield.property("value");   
     let filteredData = tableData.filter(row => row.datetime === inputElement);
     console.log(filteredData);
-    filteredData.forEach((row) => {
-        // return row.text;
-        // return table.text(row.city)
-        // return table.text(row.state)
-        // return table.text(row.country)
-        // return table.text(row.shape)
-        // return table.text(row.durationMinutes)
-        // return table.text(row.comments);
-        
+    filteredData.forEach((row) => {        
         let tr = table.append("tr");
         tr.append("td").text(row.datetime);
         tr.append("td").text(row.city);
