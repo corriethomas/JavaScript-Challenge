@@ -23,8 +23,8 @@ let inputcity = d3.select("#city");
 let inputstate = d3.select("#state");
 let inputcountry = d3.select("#country");
 let inputshape = d3.select("#shape");
-// let form = d3.select("#form");
 
+// Create search function
 button.on("click", runSearch);
 
 function runSearch() {
