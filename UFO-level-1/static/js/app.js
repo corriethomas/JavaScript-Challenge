@@ -11,7 +11,7 @@ let tableData = data;
 
 // tableData.filter((datum) => {
 //     return datum.datetime === date
-// })
+// });
 
 // YOUR CODE HERE!
 
@@ -32,9 +32,11 @@ tableData.forEach((rec) => {
 
 let button = d3.select("#filter-btn");
 let inputfield = d3.select("#datetime");
+let form = d3.select("#form");
 
 button.on("click", runSearch); 
-// inputfield.on("click", runSearch);
+inputfield.on("click", runSearch);
+form.on("click", runSearch);
 
 function runSearch() {
     d3.event.preventDefault();
@@ -42,7 +44,7 @@ function runSearch() {
     let filteredData = tableData.filter(row => row.datetime === inputElement);
     console.log(filteredData);
     filteredData.forEach((row) => {
-        // return table.text(row.datetime)
+        // return row.text;
         // return table.text(row.city)
         // return table.text(row.state)
         // return table.text(row.country)
@@ -60,6 +62,3 @@ function runSearch() {
         tr.append("td").text(row.comments);
     });
 }
-
-
-
